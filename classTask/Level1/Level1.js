@@ -74,7 +74,7 @@ function guessBirthDate() {
     let answer = 0;
     while (answer !== birthday) {
         console.log("Enter a guess: ");
-        // answer = scanner.nextInt();
+        answer = parseInt(prompt("Guess the day of the month of my birth:"));
         if (answer !== birthday) console.log("Incorrect Guess!");
     }
     console.log("Correct Guess!");
