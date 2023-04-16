@@ -1,5 +1,8 @@
 package classTask.Level2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level2 {
 
     public static int[] mergeTwoSortedArrays(int[] array1, int[] array2) {
@@ -87,6 +90,25 @@ public class Level2 {
         }
         return digits;
     }
+
+    public static double maximumSublistSum(int[] numbers) {
+            double sumOfNumbers = 0;
+            List<Double> sums = new ArrayList<>();
+            for (int number : numbers) {
+                if (number < 0) {
+                    sums.add(sumOfNumbers);
+                    sumOfNumbers  = 0;
+                }
+                else {
+                    sumOfNumbers += number;
+                }
+            }
+            double highest = 0;
+            for (double number : sums) {
+                if (number > highest) highest = number;
+            }
+            return highest;
+        }
 
 
 }
