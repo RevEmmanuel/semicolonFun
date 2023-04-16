@@ -6,6 +6,7 @@ console.log(productOfAllElements([1, 2, 3, 4])) // should print [24, 12, 8, 6]
 console.log(nonRepeatingNumber([9, 2, 3, 2, 6, 6, 8])) // should print 9
 console.log(rightRotate([1, 2, 3, 4, 5])) // should print [5, 1, 2, 3, 4]
 console.log(rearrangePositiveNegative([10, -1, 20, 4, 5, -9, -6])) // should print [-9, -6, -1, 4, 5, 10, 20]
+console.log(maximumSublistSum([-4, 2, -5, 1, 2, 3, 6, -5, 1])) // should print 12
 
 function mergeTwoSortedArrays(array1, array2) {
     let sortedBothArrays = [];
@@ -94,4 +95,22 @@ function rearrangePositiveNegative(digits) {
         }
     }
     return digits;
+}
+
+function maximumSublistSum(numbers) {
+    let sumOfNumbers = 0;
+    let sums = [];
+    for (let number of numbers) {
+        if (number < 0) {
+            sums.push(sumOfNumbers);
+            sumOfNumbers = 0;
+        } else {
+            sumOfNumbers += number;
+        }
+    }
+    let highest = 0;
+    for (let number of sums) {
+        if (number > highest) highest = number;
+    }
+    return highest;
 }

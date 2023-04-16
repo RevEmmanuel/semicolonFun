@@ -82,6 +82,23 @@ def rearrange_positive_negative(digits):
     return digits
 
 
+def maximum_sublist_sum(numbers):
+    sum_of_numbers = 0
+    sums = []
+    for number in numbers:
+        if number < 0:
+            sums.append(sumOfNumbers)
+            sum_of_numbers = 0
+        else:
+            sum_of_numbers += number
+    highest = 0
+    for number in sums:
+        if number > highest:
+            highest = number
+    return highest
+
+
+
 if __name__ == '__main__':
     first = [1, 3, 4, 5]
     second = [2, 6, 7, 8]
@@ -92,3 +109,4 @@ if __name__ == '__main__':
     print(product_of_all_elements([1, 2, 3, 4]))  # should print [24, 12, 8, 6]
     print(non_repeating_number([9, 2, 3, 2, 6, 6, 8]))  # should print 9
     print(right_rotate([1, 2, 3, 4, 5]))  # should print [5, 1, 2, 3, 4]
+    print(maximum_sublist_sum([-4, 2, -5, 1, 2, 3, 6, -5, 1])) # should print 12

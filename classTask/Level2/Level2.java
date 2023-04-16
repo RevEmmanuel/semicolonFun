@@ -108,7 +108,6 @@ public class Level2 {
                 if (number > highest) highest = number;
             }
             return highest;
-        }
-
+    }
 
 }
