@@ -91,22 +91,28 @@ public class Level1 {
 
     // number 7
     public static void infiniteSeries() {
-        double pie = 0;
-        int signToMultiply = 1;
-        int numberOfTerms = 0;
-        for (int i = 1; i <= 200000; i += 2) {
-            double term = (double) 4 / i * signToMultiply;
-            pie += term;
-            System.out.printf("%-10d%.5f%n", numberOfTerms, pie);
-            signToMultiply *= -1;
-            numberOfTerms++;
-            String pieString = String.valueOf(pie);
-            if (pieString.startsWith("3.14159")) {
-                System.out.printf("%-10d%.5f%n", numberOfTerms, pie);
-                System.out.println("Pie starts with " + pieString + " after " + numberOfTerms + " terms");
-                break;
+        double pie = 4.0;
+        double denominator = 3.0;
+        boolean found = false;
+        int terms = 1;
+
+        while (!found) {
+            if (terms % 2 == 0) {
+                pie += 4.0 / denominator;
+            } else {
+                pie -= 4.0 / denominator;
+            }
+            denominator += 2.0;
+            System.out.printf("%-10d%.7f%n", terms, pie);
+            terms++;
+
+            if (String.format("%.7f", pie).equals("3.14159")) {
+                found = true;
             }
         }
+
+        System.out.println("Pie: " + pie);
+        System.out.println("Number of terms: " + terms);
     }
 
 }

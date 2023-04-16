@@ -69,20 +69,26 @@ def guess_birth_date():
 
 # number 7
 def infinite_series():
-    pie = 0
-    sign_to_multiply = 1
-    number_of_terms = 0
-    for i in range(1, 200000, 2):
-        term = 4 / i * sign_to_multiply
-        pie += term
-        print(f'{number_of_terms}:  {round(pie, 5)}')
-        sign_to_multiply *= -1
-        number_of_terms += 1
-        pie_string = str(pie)
-        if pie_string.startswith('3.14159'):
-            print(f'{number_of_terms}:  {round(pie, 5)}')
-            print(f"Pie starts with {pie_string} after {number_of_terms} terms")
-            break
+    pie = 4.0
+    denominator = 3.0
+    found = False
+    terms = 1
+
+    while not found:
+        if terms % 2 == 0:
+            pie += 4.0 / denominator
+        else:
+            pie -= 4.0 / denominator
+        denominator += 2.0
+        print(f"{terms: <10}{pie:.7f}")
+        terms += 1
+
+        if format(pie, '.7f') == '3.1415900':
+            found = True
+
+    print("Pie:", pie)
+    print("Number of terms:", terms)
+
 
 
 if __name__ == "__main__":

@@ -82,20 +82,24 @@ function guessBirthDate() {
 
 // number 7
 function infiniteSeries() {
-    let pie = 0;
-    let signToMultiply = 1;
-    let numberOfTerms = 0;
-    for (let i = 1; i <= 200000; i += 2) {
-        let term = 4 / i * signToMultiply;
-        pie += term;
-        console.log(`${numberOfTerms.toString().padEnd(10)}${pie.toFixed(5)}`);
-        signToMultiply *= -1;
-        numberOfTerms++;
-        let pieString = pie.toString();
-        if (pieString.startsWith("3.14159")) {
-            console.log(`${numberOfTerms.toString().padEnd(10)}${pie.toFixed(5)}`);
-            console.log("Pie starts with " + pieString + " after " + numberOfTerms + " terms");
-            break;
+    let pie = 4.0;
+    let denominator = 3.0;
+    let found = false;
+    let terms = 1;
+
+    while (!found) {
+        if (terms % 2 === 0) {
+            pie += 4.0 / denominator;
+        } else {
+            pie -= 4.0 / denominator;
+        }
+        denominator += 2.0;
+        console.log(`${terms.toString().padEnd(10)}${pie.toFixed(7)}`);
+        terms++;
+        if (pie.toFixed(5) === "3.14159") {
+            found = true;
         }
     }
+    console.log("Pie: " + pie);
+    console.log("Number of terms: " + terms);
 }
